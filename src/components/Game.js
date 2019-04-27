@@ -8,7 +8,7 @@ export class Game extends Component {
     return (
       <div>
         {this.props.winner ? <h3>Player {this.props.winner} wins!</h3> : 
-          <p>Player {this.props.player} turn!</p>}
+          <div className='status'>Player {this.props.player} turn!</div>}
         
         {/* TODO: add color */}
         <Board />

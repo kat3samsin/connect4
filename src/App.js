@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+
 import Game from './components/Game';
+// import Menu from './components/Menu';
 
 export class App extends Component {
   render() {
     return (
       <div className='App'>
-        <h1>Connect 4</h1>
+        <div className='title'>Connect 4</div>
+        {/* <Menu /> */}
         <Game />
       </div>
     );

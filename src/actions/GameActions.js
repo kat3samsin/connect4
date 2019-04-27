@@ -1,4 +1,5 @@
 import store from '../store';
+import { WSASERVICE_NOT_FOUND } from 'constants';
 
 export const initialize = () => {
   return {
@@ -18,7 +19,6 @@ export const movePlayer = position => {
 export const checkWinner = () => {
   let state = store.getState();
   let winner = hasWinner(state.board);
-  console.log('checkWinner', winner)
   if (winner) {
     return {
       type: 'ENDGAME',
@@ -50,7 +50,7 @@ const hasWinner = (board) => {
 }
 
 const checkDiagonal = (board) => {
-
+  
 }
 
 const checkHorizontal = (board) => {
@@ -70,5 +70,8 @@ const checkHorizontal = (board) => {
 }
 
 const checkVertical = (board) => {
-  
+  var winner = 0;
+  var boardT = board.map((col, idx) => board.map(row => row[idx]));
+  winner = checkHorizontal(boardT);
+  return winner;
 }

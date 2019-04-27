@@ -7,16 +7,14 @@ export class Circle extends Component {
   handleClick = (args) => {
     this.props.move(args);
   };
-  componentDidMount = () => {
-    // this.props.checkWinner();
-  }
+
   render() {
     return (
       <td>
         {/* TODO: check for color */}
         <div 
           className={this.props.value === 1 ? 'player1' : 
-          this.props.value === 2 ? 'player2' : 'discEmpty'}
+          this.props.value === 2 ? 'player2' : 'init'}
           onClick={this.handleClick.bind(this, {
             row: this.props.row, 
             col: this.props.col
@@ -32,9 +30,6 @@ function mapDispatchToProps(dispatch) {
     move: pos => {
       dispatch(movePlayer(pos));
       dispatch(checkWinner());
-    },
-    checkWinner: () => {
-      
     }
   }
 }
