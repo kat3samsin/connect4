@@ -51,11 +51,12 @@ code {
 
 table {
   margin: auto;
-  /* width: 100%; */
-	border-collapse: collapse;
+	/* border-collapse: collapse; */
   border: 3px solid black;
+  /* border-radius: 20px; */
   overflow: hidden;
-  box-shadow: 4px 4px 0px #716e6c73;
+  padding: 5px;
+  box-shadow: 10px 10px 0px #716e6c73;
 }
 td {
   /* border: 1px solid black; */
