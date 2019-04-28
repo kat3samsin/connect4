@@ -5,20 +5,18 @@ import Row from './Row';
 import { initialize } from '../actions/GameActions';
 
 export class Board extends Component {
-  componentDidMount() {
+  initializeBoard() {
     this.props.init();
   }
 
   render() {
-    return (
-      <div>
-          <table>
-            <tbody>
-              {this.props.board.map((row, idx) => <Row key={idx} row={row} rowCount={idx} />)}
-            </tbody>            
-          </table>
-      </div>
-    );
+    return (<div>
+        <table className='board'>
+          <tbody>
+            {this.props.board.map((row, idx) => <Row key={idx} row={row} rowCount={idx} />)}
+          </tbody>            
+        </table>
+      </div>);
   }
 }
 function mapDispatchToProps(dispatch) {

@@ -6,24 +6,21 @@ body {
 
 .App {
   margin: auto;
-  width: 100%;
-  padding: 10px;
+  width: 40%;
   text-align: center;
-  display: inline-block;
+  /* display: inline-block; */
+  border: 3px solid black;
+  padding: 10px;
+  /* border-radius: 10px; */
+  padding-bottom: 20px;
 }
 
 .title {
-  background: #f2c7ac;
-  padding: 50px;
   font-weight: bold;
-  border: 3px solid black;
-  /* box-shadow: 4px 4px 0px #716e6c73; */
   position: relative;
   margin: auto;
-  width: 30%;
-  /* color: white; */
-  font-size: 2rem;
-  border-radius: 10px;
+  text-align: center;
+  text-decoration: underline;
 }
 
 .status {
@@ -31,48 +28,35 @@ body {
   position: relative;
   margin: auto;
   width: 30%;
-  font-size: 1.5rem;
-}
-
-.player1 {
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;  
-  background-color: #f2c7ac;
-  border: 3px solid black;
-}
-
-.player2 {
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;  
-  background-color: #66e2d5;
-  border: 3px solid black;
-}
-
-.init {
-  border-radius: 100px;
-  /* background: #73AD21; */
-  width: 50px;
-  height: 50px;  
-  background-color: white;
-  border: 3px solid black;
+  /* font-size: 1.5rem; */
 }
 
 table {
   margin: auto;
   max-width: 400px;
+  /* border: 3px solid black; */
+  overflow: hidden;
+}
+
+.board {
+  margin: auto;
+  max-width: 400px;
   border: 3px solid black;
   border-radius: 20px;
   overflow: hidden;
-  /* box-shadow: 5px 5px #716e6c73; */
+  padding: 10px;
+  box-shadow: 7px 7px #000000e7;
+  /* background: rgba(255, 250, 98, 0.495); */
 }
-td {
+.board-td {
   padding: 5px;
   position: relative;
+  /* background: #716e6c73; */
+  border: 2px solid black;
+  /* border-radius: 100px; */
 }
 
-td:hover::after {
+.board-td:hover::after {
   content: "";
   position: absolute;
   background-color: #716e6c73;
@@ -83,10 +67,45 @@ td:hover::after {
   z-index: -1;
 }
 
+.p1-td:hover::after {
+  background-color: #f2c7ac;
+}
+.p2-td:hover::after {
+  background-color: #66e2d5;
+}
+
+.player1 {
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  background: #f2c7ac;
+  border: 2px solid black;
+}
+
+.player2 {
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  background: #66e2d5;
+  border: 2px solid black;
+}
+
+.init {
+  border-radius: 100px;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: 2px solid black;
+}
+
 .btn {
   color: black;
   border: 2px solid black;
-  box-shadow: 2px 2px 0 #716e6c73;
-  background-color: #66e2d5;
-  margin-right: 80px;
+  box-shadow: 4px 4px 0 #66e2d5;
+  background: #66e2d5;
+  font-size: 1.2em;
+}
+
+.btn:focus {
+  outline: none;
 }

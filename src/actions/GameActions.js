@@ -1,5 +1,4 @@
 import store from '../store';
-import { WSASERVICE_NOT_FOUND } from 'constants';
 
 export const initialize = () => {
   return {
@@ -50,7 +49,6 @@ const hasWinner = (board) => {
 }
 
 const checkDiagonal = (board) => {
-  
 }
 
 const checkHorizontal = (board) => {

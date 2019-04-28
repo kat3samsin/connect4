@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Board from './Board'
+import Board from './Board';
+import {initialize} from '../actions/GameActions';
 
 export class Game extends Component {
+  initializeBoard() {
+    this.props.init();
+  }
   render() {
     return (
       <div>
-        {this.props.winner ? <h3>Player {this.props.winner} wins!</h3> : 
-          <div className='status'>Player {this.props.player} turn!</div>}
-        
-        {/* TODO: add color */}
-        <Board />
+        <button className='btn' onClick={this.initializeBoard.bind(this)}>New Game</button>
+        {this.props.board.length > 0? 
+          <div>
+            {this.props.winner ? 
+              <h1>Game Over!<br/>Player {this.props.winner} wins!</h1> :
+              <h1>Player {this.props.player}</h1>}
+            <Board />
+          </div> : null}
       </div>
     );
   }
@@ -19,4 +26,11 @@ export class Game extends Component {
 const mapStateToProps = (state) => {
   return state;
 }
-export default connect(mapStateToProps)(Game);
+function mapDispatchToProps(dispatch) {
+  return {
+    init: () => {
+      dispatch(initialize())
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

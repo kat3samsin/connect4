@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import Circle from './Circle';
+import Cell from './Cell';
 
 export class Row extends Component {
   render() {
     return (
       <tr>
-          {this.props.row.map((val, idx) => <Circle key={idx} value={val} row={this.props.rowCount} col={idx} />)}
+          {this.props.row.map((val, idx) => <Cell key={idx} value={val} row={this.props.rowCount} col={idx} />)}
       </tr>
     );
   }

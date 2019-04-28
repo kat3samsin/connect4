@@ -2,7 +2,8 @@ const initialState = {
   board: [],
   rows: 6,
   cols: 7,
-  player: 1
+  player: 1,
+  winner: 0
 };
 
 const GameReducer = (state = initialState, action) => {
@@ -10,7 +11,9 @@ const GameReducer = (state = initialState, action) => {
     case 'INIT':
       let board = initBoard(state.rows, state.cols);
       return Object.assign({}, state, {
-        board: board
+        board: board,
+        player: 1,
+        winner: 0
       });
     case 'MOVE':
       return Object.assign({}, state, {
