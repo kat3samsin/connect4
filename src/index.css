@@ -11,7 +11,7 @@ body {
   /* display: inline-block; */
   border: 3px solid black;
   padding: 10px;
-  /* border-radius: 10px; */
+  border-radius: 10px;
   padding-bottom: 20px;
 }
 
@@ -33,14 +33,12 @@ body {
 
 table {
   margin: auto;
-  max-width: 400px;
   /* border: 3px solid black; */
   overflow: hidden;
 }
 
 .board {
   margin: auto;
-  max-width: 400px;
   border: 3px solid black;
   border-radius: 20px;
   overflow: hidden;
@@ -108,4 +106,26 @@ table {
 
 .btn:focus {
   outline: none;
+}
+
+.btn:hover {
+  /* background: white; */
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

@@ -15,8 +15,8 @@ export class Game extends Component {
         {this.props.board.length > 0? 
           <div>
             {this.props.winner ? 
-              <h1>Game Over!<br/>Player {this.props.winner} wins!</h1> :
-              <h1>Player {this.props.player}</h1>}
+              <h2>Game Over! Player {this.props.winner} wins!</h2> :
+              <h2>Player {this.props.player}</h2>}
             <Board />
           </div> : null}
       </div>
