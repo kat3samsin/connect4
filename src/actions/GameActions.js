@@ -2,7 +2,10 @@ import store from '../store';
 
 export const initialize = () => {
   return {
-    type: "INIT"
+    type: "INIT",
+    rows: 4, 
+    cols: 4,
+    cellsToWin: 3
   };
 };
 
@@ -38,7 +41,6 @@ const updateBoard = (state, col) => {
       break;
     }
   }
-  // console.log(board);
   return board;
 }
 
@@ -49,16 +51,47 @@ const hasWinner = (board) => {
 }
 
 const checkDiagonal = (board) => {
+  let winner = checkHorizontal(getDiagonal(board));
+  winner = winner || checkHorizontal(getDiagonal(board, true));
+  return winner;
+}
+
+const getDiagonal = (board, bottomToTop) => {
+  let cellsToWin = store.getState().cellsToWin;
+  let row = board.length;
+  let col = board[0].length;
+  let maxLength = Math.max(row, col);
+  let diagonal = [];
+
+  for (var i = 0; i <= 2 * (maxLength - 1); ++i) {
+    var d = [];
+
+    for (let j = row - 1; j >= 0; --j) {
+      let k = i - (bottomToTop ? row - j : j);
+      if (k >= 0 && k < col) {
+          d.push(board[j][k]);
+      }
+    }
+
+    if(d.length >= cellsToWin) {
+      diagonal.push(d);
+    }
+  }
+  return diagonal;
 }
 
 const checkHorizontal = (board) => {
-  var winner = 0;
+  let winner = 0;
+  let cellsToWin = store.getState().cellsToWin;
+  let p1Winner = Array(cellsToWin).fill('1').join('');
+  let p2Winner = Array(cellsToWin).fill('2').join('');
+
   board.some((r) => {
-    var row = r.join('')
-    if (row.match(/1111/)) {
+    var row = r.join('');
+    if (row.match(p1Winner)) {
       winner = 1;
       return true;
-    } else if (row.match(/2222/)) {
+    } else if (row.match(p2Winner)) {
       winner = 2;
       return true;
     }
@@ -68,8 +101,8 @@ const checkHorizontal = (board) => {
 }
 
 const checkVertical = (board) => {
-  var winner = 0;
-  var boardT = board.map((col, idx) => board.map(row => row[idx]));
+  let winner = 0;
+  let boardT = board.map((col, idx) => board.map(row => row[idx]));
   winner = checkHorizontal(boardT);
   return winner;
 }

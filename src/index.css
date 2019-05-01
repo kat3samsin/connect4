@@ -40,16 +40,16 @@ table {
 .board {
   margin: auto;
   border: 3px solid black;
-  border-radius: 20px;
+  border-radius: 10px;
   overflow: hidden;
   padding: 10px;
-  box-shadow: 7px 7px #000000e7;
+  box-shadow: 5px 5px black;
   /* background: rgba(255, 250, 98, 0.495); */
 }
 .board-td {
   padding: 5px;
   position: relative;
-  /* background: #716e6c73; */
+  background: #8e8c8b73;
   border: 2px solid black;
   /* border-radius: 100px; */
 }

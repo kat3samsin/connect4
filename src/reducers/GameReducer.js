@@ -3,15 +3,19 @@ const initialState = {
   rows: 6,
   cols: 7,
   player: 1,
-  winner: 0
+  winner: 0,
+  cellsToWin: 4
 };
 
 const GameReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INIT':
-      let board = initBoard(state.rows, state.cols);
+      let board = initBoard(action.rows, action.cols);
       return Object.assign({}, state, {
         board: board,
+        rows: action.rows,
+        cols: action.cols,
+        cellsToWin: action.cellsToWin,
         player: 1,
         winner: 0
       });
