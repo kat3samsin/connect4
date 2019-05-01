@@ -3,9 +3,9 @@ import store from '../store';
 export const initialize = () => {
   return {
     type: "INIT",
-    rows: 4, 
-    cols: 4,
-    cellsToWin: 3
+    rows: 6, 
+    cols: 7,
+    cellsToWin: 4
   };
 };
 
