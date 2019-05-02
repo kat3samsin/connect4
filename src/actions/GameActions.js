@@ -1,5 +1,3 @@
-import store from '../store';
-
 export const initialize = () => {
   return {
     type: 'INIT',

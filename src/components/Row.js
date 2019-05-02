@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-
 import Cell from './Cell';
 
-export class Row extends Component {
+class Row extends Component {
   render() {
     return (
       <tr>
@@ -12,7 +10,4 @@ export class Row extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  return state;
-}
-export default connect(mapStateToProps)(Row);
+export default Row;
