@@ -7,7 +7,7 @@ export class Row extends Component {
   render() {
     return (
       <tr>
-          {this.props.row.map((val, idx) => <Cell key={idx} value={val} row={this.props.rowCount} col={idx} />)}
+          {this.props.row.map((val, idx) => <Cell key={idx} value={val} col={idx} />)}
       </tr>
     );
   }

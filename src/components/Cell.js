@@ -17,8 +17,11 @@ export class Cell extends Component {
           className={this.props.value === 1 ? 'player1' : 
                     this.props.value === 2 ? 'player2' : 'init'}
           onClick={this.handleClick.bind(this, {
-            row: this.props.row, 
-            col: this.props.col
+            rows: this.props.rows, 
+            col: this.props.col,
+            player: this.props.player,
+            board: this.props.board,
+            cellsToWin: this.props.cellsToWin
           })}>
         </div>
       </td>
@@ -28,9 +31,9 @@ export class Cell extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    move: pos => {
-      dispatch(movePlayer(pos));
-      dispatch(checkWinner());
+    move: args => {
+      dispatch(movePlayer(args));
+      dispatch(checkWinner(args));
     }
   }
 }
