@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Board } from './Board';
+import Board from './Board';
 
 describe('Board', () => {
   let wrapper;
 
-   beforeEach(() => {
-     wrapper = shallow(<Board board={[[0, 0, 0], [0, 0, 0], [0, 0, 0]]} />);
-   });
+  beforeEach(() => {
+    wrapper = shallow(<Board board={[[0, 0, 0], [0, 0, 0], [0, 0, 0]]} />);
+  });
 
   it('renders without crashing', () => {
     expect(wrapper).toMatchSnapshot();
