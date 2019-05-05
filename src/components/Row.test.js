@@ -21,6 +21,7 @@ describe('Row', () => {
   });
 
   it('renders 3 rows', () => {
-    expect(wrapper.find('.Cell')).toHaveLength(3);
+    //Issue in enzyme-adapter-react-16 #2107
+    expect(wrapper.find('ConnectFunction')).toHaveLength(3);
   });
 });
