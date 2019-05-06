@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { movePlayer, checkWinner } from '../actions/GameActions';
+import { movePlayer, removePlayer, checkWinner } from '../actions/GameActions';
 
 export class Cell extends Component {
   handleClick = args => {
     if (!this.props.winner) {
-      this.props.move(args);
+      if (!this.props.value) {
+        console.log('move')
+        this.props.move(args);
+      } else {
+        console.log('remove', this.props.value)
+        this.props.remove(args);
+      }
     }
   };
 
@@ -42,6 +48,10 @@ function mapDispatchToProps(dispatch) {
   return {
     move: args => {
       dispatch(movePlayer(args));
+      dispatch(checkWinner(args));
+    },
+    remove: args => {
+      dispatch(removePlayer(args));
       dispatch(checkWinner(args));
     }
   };

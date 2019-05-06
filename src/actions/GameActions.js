@@ -10,10 +10,36 @@ export const initialize = () => {
 export const movePlayer = state => {
   let action = {};
   action.type = 'MOVE';
+
   action.board = updateBoard(state.board, state.player, state.rows, state.col);
   action.player = state.player === 1 ? 2 : 1;
   return action;
 };
+
+export const removePlayer = state => {
+  let action = {};
+  action.type = 'MOVE';
+
+  if (samePlayerValue(state.board, state.player, state.rows, state.col)) {
+    slideDown(state.board, state.rows, state.col);
+  }
+  action.board = state.board;
+  action.player = state.player === 1 ? 2 : 1;
+  return action;
+}
+
+const samePlayerValue = (board, player, rows, col) => {
+  if (board[rows - 1][col] === player) {
+    board[rows - 1][col] = 0;
+    return true;
+  }
+}
+
+const slideDown = (board, rows, col) => {
+  for (let row = rows - 1; board.length === rows && row >= 1; row--) {
+    board[row][col] = board[row - 1][col];
+  }
+}
 
 export const updateBoard = (board, player, rows, col) => {
   for (let row = rows - 1; board.length === rows && row >= 0; row--) {
