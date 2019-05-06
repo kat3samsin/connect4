@@ -8,37 +8,40 @@ export const initialize = () => {
 };
 
 export const movePlayer = state => {
-  let action = {};
-  action.type = 'MOVE';
-
-  action.board = updateBoard(state.board, state.player, state.rows, state.col);
-  action.player = state.player === 1 ? 2 : 1;
-  return action;
+  updateBoard(state.board, state.player, state.rows, state.col);
+  
+  return {
+    type: 'MOVE',
+    board: state.board,
+    player: state.player === 1 ? 2 : 1
+  };
 };
 
 export const removePlayer = state => {
-  let action = {};
-  action.type = 'MOVE';
-
   if (samePlayerValue(state.board, state.player, state.rows, state.col)) {
-    slideDown(state.board, state.rows, state.col);
+    slideValuesDown(state.board, state.rows, state.col);
   }
-  action.board = state.board;
-  action.player = state.player === 1 ? 2 : 1;
-  return action;
+  console.log(state.board)
+  return {
+    type: 'MOVE',
+    board: state.board,
+    player: state.player === 1 ? 2 : 1
+  };
 }
 
-const samePlayerValue = (board, player, rows, col) => {
+export const samePlayerValue = (board, player, rows, col) => {
   if (board[rows - 1][col] === player) {
     board[rows - 1][col] = 0;
     return true;
   }
 }
 
-const slideDown = (board, rows, col) => {
-  for (let row = rows - 1; board.length === rows && row >= 1; row--) {
+export const slideValuesDown = (board, rows, col) => {
+  for (let row = rows - 1; board.length === rows && row - 1 >= 0; row--) {
     board[row][col] = board[row - 1][col];
   }
+  board[0][col] = 0;
+  return board;
 }
 
 export const updateBoard = (board, player, rows, col) => {

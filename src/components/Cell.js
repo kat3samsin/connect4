@@ -5,14 +5,13 @@ import { movePlayer, removePlayer, checkWinner } from '../actions/GameActions';
 
 export class Cell extends Component {
   handleClick = args => {
-    if (!this.props.winner) {
-      if (!this.props.value) {
-        console.log('move')
-        this.props.move(args);
-      } else {
-        console.log('remove', this.props.value)
-        this.props.remove(args);
-      }
+    if (this.props.winner) {
+      return;
+    }
+    if (!this.props.value) {
+      this.props.move(args);
+    } else {
+      this.props.remove(args);
     }
   };
 

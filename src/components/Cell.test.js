@@ -38,10 +38,11 @@ describe('Cell', () => {
   });
 
   describe('simulate div click', () => {
-    let moveFn;
+    let moveFn, removeFn;
 
     beforeEach(() => {
       moveFn = jest.fn();
+      removeFn = jest.fn();
     });
 
     afterEach(() => {
@@ -50,7 +51,7 @@ describe('Cell', () => {
 
     it('col is 1 > should bind col=1', () => {
       let wrapper = shallow(
-        <Cell player={1} value={1} col={1} move={moveFn} />
+        <Cell player={1} value={0} col={1} move={moveFn} remove={removeFn}/>
       );
       wrapper.find('div').simulate('click');
       expect(moveFn).toBeCalledWith({
@@ -64,7 +65,7 @@ describe('Cell', () => {
 
     it('col is 3 > should bind col=3', () => {
       let wrapper = shallow(
-        <Cell player={1} value={1} col={3} move={moveFn} />
+        <Cell player={1} value={0} col={3} move={moveFn} remove={removeFn}/>
       );
       wrapper.find('div').simulate('click');
       expect(moveFn).toBeCalledWith({
